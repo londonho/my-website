@@ -45,23 +45,84 @@ body{
 .sticker{ position:absolute; z-index:3; pointer-events:none;
     filter: drop-shadow(1px 2px 2px rgba(43,42,38,.25)); }
 
-.ransom{ display:inline-flex; gap:6px; line-height:1; }
+.ransom{ display:inline-flex; align-items:flex-end; gap:8px; line-height:1; }
+
 .ransom > span{
-    display:inline-block; padding:.06em .12em .1em;
+    display:inline-block;
+    padding:.06em .12em .1em;
+    background-color: var(--scrap, var(--page));
+    color: var(--page);
     box-shadow: 1px 2px 0 rgba(43,42,38,.25);
+    font-size: var(--size, 1em);
+}
+.ransom .glyph{ 
+    display:inline-block;
+    filter: drop-shadow(3px 3.5px 3.5px rgba(43,42,38,.65));
+    transform: translateY(var(--nudge, 0));
+}
+
+.ransom .isometric{
+    --scrap: var(--marker);
+    font-family: "Fontdiner Swanky", serif;
+    background-image: repeating-linear-gradient(90deg,
+        rgba(254, 240, 184, 0.72) 0 7px, transparent 7px 16px);
+    padding-top: .22em;
+}
+
+.ransom .blank{
+    --scrap: var(--tape-pink);
+    --nudge: .09em;
+    --size: .90em;
+    font-family: "Henny Penny", serif;
+    padding-top: .15em;
+}
+
+.ransom .gingham{
+    --scrap: var(--tape-blue);
+    font-family: "Fontdiner Swanky", serif;
+    padding-top: .22em;
+    background-image:
+        repeating-linear-gradient(0deg,  rgba(255,255,255,.6) 0 6px, transparent 6px 12px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.6) 0 6px, transparent 6px 12px);
+}
+
+.ransom .block{
+    --scrap: var(--accent);
+    --nudge: .05em;
+    --size: .95em;
+    font-family: "Alfa Slab One", serif;
+    color: var(--page);
+    padding-right: .15em; padding-bottom: .16em;
+}
+
+.ransom .stripe{
+    --scrap: var(--marker);
+    font-family: "Henny Penny", sans-serif;
+    padding-top: .30em;
+    background-image: repeating-linear-gradient(115deg,
+        rgba(255,255,255,.72) 0 7px, transparent 7px 16px);
+}
+
+.ransom .dots{
+    --scrap: var(--tape-pink);
+    font-family: "Henny Penny", serif; font-weight: 400;
+    background-image: radial-gradient(rgba(255,255,255,.9) 2px, transparent 2.2px);
+    background-size: 9px 9px;
 }
 
 .intro{
     position:fixed; inset:0; z-index:100;
-    display:grid; place-content:center; gap:14px;
+    display:grid; place-content:center;
     background: var(--paper);
     background-image: radial-gradient(var(--grid) 1.1px, transparent 1.1px);
     background-size:24px 24px;
+    gap: 26px; 
+    justify-items: center;
 }
 .intro-open{ font-family:Caveat,cursive; font-size:var(--t-xl);
     color:var(--ink); background:none; cursor:pointer;
     border:none; border-bottom:2px solid var(--accent);
-    padding:2px 10px 4px; gap: 26px; justify-items: center;
+    padding:2px 10px 4px; 
 }
 .intro-open:hover{ color:var(--accent); }
 .intro-open:focus-visible{ outline: 2.5px solid var(--accent); outline-offset:6px; }

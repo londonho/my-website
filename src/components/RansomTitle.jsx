@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 export const LETTERS = [
-  { c:"L", font:"'Alfa Slab One', serif", bg:"var(--marker)",     fg:"var(--ink)",  rot:-5 },
-  { c:"O", font:"Bungee, sans-serif",     bg:"var(--tape-pink)",  fg:"var(--ink)",  rot: 3 },
-  { c:"N", font:"Archivo, sans-serif",    bg:"var(--tape-blue)",  fg:"var(--ink)",  rot:-2, w:900 },
-  { c:"D", font:"'Alfa Slab One', serif", bg:"var(--accent)",     fg:"var(--page)", rot: 4 },
-  { c:"O", font:"Bungee, sans-serif",     bg:"var(--marker)",     fg:"var(--ink)",  rot:-3 },
-  { c:"N", font:"Archivo, sans-serif",    bg:"var(--tape-pink)",  fg:"var(--ink)",  rot: 2, w:900 },
+  { c:"L", cls:"isometric",  rot:-5 },
+  { c:"O", cls:"blank",  rot: 10 },
+  { c:"N", cls:"gingham",  rot:-2 },
+  { c:"D", cls:"block", rot: 4 },
+  { c:"O", cls:"stripe",  rot:-3 },
+  { c:"N", cls:"dots",  rot: 2 },
 ];
 
 const container = {
@@ -38,8 +38,10 @@ export default function RansomTitle({ size = "var(--t-cover)", animate = true, o
           variants={letter}
           onAnimationComplete={i === LETTERS.length - 1 ? onDone : undefined} 
           aria-hidden="true"
-          style={{ fontFamily: l.font, fontWeight: l.w, background: l.bg, color: l.fg }}
-        >{l.c}</motion.span>
+          className={l.cls}
+        >
+          <span className="glyph">{l.c}</span>
+        </motion.span>
       ))}
     </motion.span>
   );
