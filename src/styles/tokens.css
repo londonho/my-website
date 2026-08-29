@@ -1,0 +1,19 @@
+:root{
+    --paper: #E8E5DC;
+    --page: #FCFBF8;
+    --page-edge: #DAD5C7;
+    --ink: #2B2A26;
+    --graphite: #716D64;
+    --grid: #C2CDD3;
+    --accent: #3F7A4F;
+    --accent-pale: #DCE8DD;
+    --marker: #DDE96B;
+    --tape-pink: #EFC7D1;
+    --tape-blue: #BFD8DE;
+    --t-xs: .74rem; --t-sm: .875rem; --t-base: 1rem;
+    --t-lg: 1.25rem; --t-xl: 1.563rem; --t-2xl: 1.953rem;
+    --t-3xl: 2.441rem; --t-cover: clamp(3rem, 11vw, 6.5rem);
+    --s-1: 6px; --s-2: 12px; --s-3: 24px; --s-4: 48px; --s-5: 72px;
+    --shadow-lift: 0 10px 26px -18px rgba(43,42,38,.45);
+    --tilt-a: -1.6deg; --tilt-b: 2.1deg; --tilt-c: -.8deg;
+}

@@ -1,0 +1,46 @@
+body{
+    margin:0;
+    background-color: var(--paper);
+    background-image: radial-gradient(var(--grid) 1.1px, transparent 1.1px);
+    background-size: 24px 24px;
+    background-position: 12px 12px;
+    color: var(--ink);
+    font-family: Karla, system-ui, sans-serif;
+    line-height: 1.6;
+}
+
+.page{
+    background: var(--page);
+    border: 1px solid var(--page-edge);
+    box-shadow: var(--shadow-lift);
+    padding: var(--s-4);
+}
+
+.grain::after{
+    content:""; position:fixed; inset:0; pointer-events: none;
+    opacity:0.5; z-index:9999;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tape{
+    position:absolute; width:96px; height:26px;
+    opacity:.85; z-index:2;
+    clip-path: polygon(0 12%, 4% 0, 100% 6%, 96% 100%, 2% 92%);
+    box-shadow: 0 1px 2px rgba(43,42,38,.18);
+}
+
+.polaroid{
+  position:relative; margin:0; padding:12px 12px 44px;
+  background:#fff; width:230px;
+  box-shadow: 0 8px 20px -12px rgba(43,42,38,.5);
+  transition: transform .3s ease;
+}
+.polaroid img{ display:block; width:100%; aspect-ratio:4/5; object-fit:cover; }
+.polaroid figcaption{
+  font-family:Caveat, cursive; font-size:var(--t-lg);
+  color:var(--ink); text-align:center; padding-top:8px;
+}
+.polaroid:hover{ transform: rotate(0deg) scale(1.03); }
+
+.sticker{ position:absolute; z-index:3; pointer-events:none;
+  filter: drop-shadow(1px 2px 2px rgba(43,42,38,.25)); }
