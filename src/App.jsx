@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import Intro from "./components/Intro";
 import Notebook from "./layout/Notebook";
@@ -15,15 +15,27 @@ export default function App() {
     return !seen();
   });
 
+  const [returning, setReturning] = useState(false);
+
   const open = useCallback(() => {
     try { sessionStorage.setItem("coverOpened", "1"); } catch {}
     setShowCover(false);
   }, []);
 
+  const close = useCallback(() => {
+    try { sessionStorage.removeItem("coverOpened"); } catch {}
+    setReturning(true);
+    setShowCover(true);
+  }, [])
+
+  const logoRef = useRef(null);
+
   return (
     <>
-      <AnimatePresence>{showCover && <Intro key="intro" onOpen={open} />}</AnimatePresence>
-      <Notebook />
+      <div className="cover-stage">
+        <AnimatePresence>{showCover && <Intro key="intro" onOpen={open} returning={returning} targetRef={logoRef} />}</AnimatePresence>
+      </div>
+      <Notebook onClose={close} logoRef={logoRef} logoHidden={showCover} />
     </>
   );
 }
