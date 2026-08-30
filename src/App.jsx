@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useCallback, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import Intro from "./components/Intro";
@@ -16,6 +17,7 @@ export default function App() {
   });
 
   const [returning, setReturning] = useState(false);
+  const navigate = useNavigate();
 
   const open = useCallback(() => {
     try { sessionStorage.setItem("coverOpened", "1"); } catch {}
@@ -24,9 +26,10 @@ export default function App() {
 
   const close = useCallback(() => {
     try { sessionStorage.removeItem("coverOpened"); } catch {}
+    navigate("/");
     setReturning(true);
     setShowCover(true);
-  }, [])
+  }, [navigate])
 
   const logoRef = useRef(null);
 
@@ -35,7 +38,9 @@ export default function App() {
       <div className="cover-stage">
         <AnimatePresence>{showCover && <Intro key="intro" onOpen={open} returning={returning} targetRef={logoRef} />}</AnimatePresence>
       </div>
-      <Notebook onClose={close} logoRef={logoRef} logoHidden={showCover} />
+      <div inert={showCover || undefined}>
+        <Notebook onClose={close} logoRef={logoRef} logoHidden={showCover} />
+      </div>
     </>
   );
 }

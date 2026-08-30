@@ -51,6 +51,7 @@ export default function Intro({ onOpen, targetRef, returning = false }) {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.45, ease: "easeOut"}}
                   onClick={(e) => { e.stopPropagation(); launch(); }}
+                  
                 >
                     open the notebook
                 </motion.button>
