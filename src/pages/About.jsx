@@ -3,8 +3,10 @@ import StickyNote from "../components/StickyNote";
 import Sticker from "../components/Sticker";
 import { asset } from "../lib/asset";
 import { hobbies, languages, frameworks, database, iam, tools } from "../data/facts";
+import { useTitle } from "../lib/useTitle";
 
 export default function About() {
+    useTitle("About")
     return (
         <>
         <div className="spread-grid">

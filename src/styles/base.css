@@ -144,6 +144,7 @@ body{
     perspective-origin: left center;
     min-height: 70vh;
     position: relative;
+    z-index: 1;
 }
 
 .spread{
@@ -160,11 +161,11 @@ body{
     z-index: 4;
 }
 
-.tabs{ display:flex; flex-wrap: wrap; gap:4px; padding-left: 24px; }
+.tabs{ display:flex; flex-wrap: wrap; gap:4px; padding-left: 24px; margin-bottom: -5px;}
 .tabs a{
     font-family:Archivo, sans-serif; font-weight: 700; font-size:var(--t-sm);
     letter-spacing:.06em; text-decoration: none; color:var(--ink);
-    padding: 10px 22px 14px;
+    padding: 10px 22px 18px;
     background:var(--tape-blue);
     border-radius: 6px 6px 0 0;
     transform: translateY(4px);
@@ -172,7 +173,7 @@ body{
 }
 .tabs a:nth-child(2){ background:var(--marker); }
 .tabs a:nth-child(3){ background:var(--tape-pink); }
-.tabs a:hover{ transform: translateY(0); }
+.tabs a:hover{ transform: translateY(1px); }
 .tabs a.active{ transform: translateY(0); box-shadow: 0 -2px 6px -3px rgba(43,42,38,.4); }
 
 .cover-stage{
@@ -185,7 +186,7 @@ body{
 .notebook-bar{
     flex-wrap: wrap;
     display: flex; align-items: flex-end; justify-content: space-between;
-    gap: var(--s-3); margin-bottom: var(--s-1);
+    gap: var(--s-3); margin-bottom: 0;
 }
 
 .logo-close{
@@ -251,3 +252,146 @@ body{
     letter-spacing: .05em; line-height: 0.9;
     margin: 0 0 .1em;
 }
+
+.project-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-4);
+}
+
+.project{
+    position:relative; margin:0;
+    background: var(--page);
+    border: 1px solid var(--page-edge);
+    padding: 14px 14px 20px;
+    transform: rotate(var(--tilt, 0deg));
+    box-shadow: var(--shadow-lift);
+    transition: transform .3s ease;
+}
+.project img{ display:block; width:100%; aspect-ratio:16/10; object-fit:cover; }
+.project h2{
+    font-family: Archivo, sans-serif; font-weight:900;
+    font-size: var(--t-lg); margin:12px 0 4px;
+}
+.project p{ font-size: var(--t-sm); color: var(--graphite); margin:0 0 10px; }
+.project:hover{ transform: rotate(0deg) scale(1.02); }
+.stack{
+  display:flex; flex-wrap:wrap; gap:6px;
+  list-style:none; margin:0 0 14px; padding:0;
+}
+.stack li{
+  font-family: Archivo, sans-serif; font-size: var(--t-xs); font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase;
+  background: var(--accent-pale); color: var(--accent);
+  padding: 3px 8px; border-radius: 2px;
+}
+
+.section-label{
+    font-family: Archivo, sans-serif; font-weight: 900;
+    font-size: var(--t-m); letter-spacing: .16em; text-transform: uppercase;
+    color: var(--graphite); margin: 0 0 var(--s-2);
+}
+
+.experience{ margin-bottom: var(--s-5); }
+
+.job{
+    position: relative;
+    background: var(--page);
+    border: 1px solid var(--page-edge);
+    padding: var(--s-3);
+    transform: rotate(var(--tilt, 0deg));
+    box-shadow: var(--shadow-lift);
+}
+.job h3{
+    font-family: Archivo, sans-serif; font-weight: 900;
+    font-size: var(--t-xl); margin: 0 0 2px;
+}
+.job-meta{
+    font-size: var(--t-m); color: var(--graphite);
+    margin: 0 0 var(--s-2);
+}
+.job-points{ list-style: none; margin: 0 0 var(--s-2); padding: 0; }
+.job-points li{
+    position: relative; padding-left: 20px;
+    margin-bottom: 8px; max-width: 68ch;
+}
+.job-points li::before{
+    content: ""; position: absolute; left: 2px; top: .55em;
+    width: 7px; height: 7px; background: var(--accent);
+    transform: rotate(12deg);
+}
+
+.links{ 
+    list-style:none; display:flex; flex-wrap:wrap; 
+    gap:12px; padding:0; margin:0 0 var(--s-4);
+    justify-content: center; 
+}
+.links a{
+    display:flex; align-items:center; gap:8px;
+    font-family: Archivo, sans-serif; font-weight:700;
+    font-size: var(--t-sm); letter-spacing:.06em;
+    text-decoration:none; color:var(--ink);
+    background: var(--chip, var(--tape-blue));
+    padding: 8px 16px; border-radius: 2px;
+    transform: rotate(var(--chip-tilt, var(--tilt-c)));
+    transition: transform .2s ease;
+}
+.links li:nth-child(2) a{ --chip: var(--marker); --chip-tilt: var(--tilt-b); }
+.links li:nth-child(3) a{ --chip: var(--tape-pink); --chip-tilt: var(--tilt-a); }
+.links a:hover{ transform: rotate(0deg) translateY(-2px); }
+
+.letter{
+    position: relative;
+    background: var(--page);
+    border: 1px solid var(--page-edge);
+    box-shadow: var(--shadow-lift);
+    padding: var(--s-4);
+    max-width: 85ch;
+}
+.salutation{ font-family: Caveat, cursive; font-size: var(--t-2xl); margin: 0 0 var(--s-2); }
+.signoff{ margin-top: var(--s-3); }
+
+.letter-line{ 
+    display:flex; align-items:baseline; gap:10px; 
+    margin-bottom: var(--s-2); max-width: 42ch;
+}
+.letter-line > span{
+    font-family: Archivo, sans-serif; font-size: var(--t-xs);
+    letter-spacing:.14em; text-transform:uppercase; color:var(--graphite);
+    flex-shrink: 0;
+}
+.letter input{
+    flex: 1; min-width: 0;
+    font-family: Caveat, cursive; font-size: var(--t-xl); color: var(--ink);
+    background: none; border: none; border-bottom: 1.5px solid var(--grid);
+    padding: 2px 4px;
+}
+
+.letter textarea{
+    width: 100%; border: none; resize: vertical;
+    font-family: Caveat, cursive; font-size: var(--t-xl); color: var(--ink);
+    line-height: 34px;
+    background-image: repeating-linear-gradient(
+        to bottom, transparent 0 33px, var(--grid) 33px 34px);
+    padding: 0 4px;
+}
+
+.letter input:focus, .letter textarea:focus{ outline:none; border-bottom-color: var(--accent); }
+.letter input:focus-visible, .letter textarea:focus-visible{
+    outline: 2px solid var(--accent); outline-offset: 3px;
+}
+
+.stamp{
+    margin-top: var(--s-3);
+    font-family: Archivo, sans-serif; font-weight:900; font-size: var(--t-sm);
+    letter-spacing:.12em; text-transform:uppercase;
+    background: var(--marker); color: var(--ink);
+    border: 2px dashed rgba(43,42,38,.45);
+    padding: 12px 22px; cursor: pointer;
+    transform: rotate(2deg);
+    transition: transform .2s ease;
+}
+.stamp:hover{ transform: rotate(0deg) translateY(-2px); }
+.stamp:disabled{ opacity:.6; cursor: wait; }
+
+.form-status{ font-family: Caveat, cursive; font-size: var(--t-xl); color: var(--accent); min-height: 1.4em; }
