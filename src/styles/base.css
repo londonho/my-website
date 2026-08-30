@@ -7,6 +7,7 @@ body{
     color: var(--ink);
     font-family: Karla, system-ui, sans-serif;
     line-height: 1.6;
+    min-width: 1050px;
 }
 
 .page{
@@ -32,10 +33,11 @@ body{
 .polaroid{
     position:relative; margin:0; padding:12px 12px 44px;
     background:#fff; width:230px;
+    transform: rotate(var(--tilt, 0deg));
     box-shadow: 0 8px 20px -12px rgba(43,42,38,.5);
     transition: transform .3s ease;
 }
-.polaroid img{ display:block; width:100%; aspect-ratio:4/5; object-fit:cover; }
+.polaroid img{ display:block; width:100%; aspect-ratio:var(--ratio, 4/5); object-fit: cover; }
 .polaroid figcaption{
     font-family:Caveat, cursive; font-size:var(--t-lg);
     color:var(--ink); text-align:center; padding-top:8px;
@@ -54,6 +56,7 @@ body{
     color: var(--page);
     box-shadow: 3px 3px 4px rgba(43,42,38,.35);
     font-size: var(--size, 1em);
+    flex-shrink: 0;
 }
 .ransom .glyph{ 
     display:inline-block;
@@ -157,7 +160,7 @@ body{
     z-index: 4;
 }
 
-.tabs{ display:flex; gap:4px; padding-left: 24px; }
+.tabs{ display:flex; flex-wrap: wrap; gap:4px; padding-left: 24px; }
 .tabs a{
     font-family:Archivo, sans-serif; font-weight: 700; font-size:var(--t-sm);
     letter-spacing:.06em; text-decoration: none; color:var(--ink);
@@ -180,11 +183,13 @@ body{
 .cover-stage > *{ pointer-events: auto; }
 
 .notebook-bar{
+    flex-wrap: wrap;
     display: flex; align-items: flex-end; justify-content: space-between;
     gap: var(--s-3); margin-bottom: var(--s-1);
 }
 
 .logo-close{
+    flex-shrink: 0;
     background: none; border: none; padding: 4px; cursor: pointer;
     transition: opacity .2s ease, transform .2s ease;
 }
@@ -194,3 +199,55 @@ body{
 .logo-close:hover{ transform: rotate(-1.5deg) scale(1.04); }
 .logo-close:focus-visible{ outline:2.5px solid var(--accent); outline-offset: 4px; }
 
+.spread-grid{ display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: var(--s-4); align-items:start; }
+.spread-grid.flip{
+    grid-template-columns: 260px minmax(0, 1fr);
+    margin-top: var(--s-5);
+}
+.notes-row{
+    display:grid; 
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px; 
+    align-items: start;
+    margin-top:var(--s-3); 
+}
+.column{ max-width: 66ch; position: relative; }
+.gutter{ position:relative; }
+
+.sticky{
+    width: 160px;
+    padding: 16px 18px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
+}
+.sticky h3{
+    font-family: Archivo, sans-serif; font-weight: 700;
+    font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase;
+    margin: 0 0 8px; color: var(--ink);
+}
+.sticky ul{ list-style: none; margin: 0; padding: 0; }
+.sticky li{
+    font-family: Caveat, cursive; font-size: var(--t-lg); line-height: 1.35;
+    color: var(--ink)
+}
+.sticky-lift{
+    position: relative;
+    z-index: var(--layer, 1);
+    transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--tilt, 0deg));
+    filter:
+        drop-shadow(1px 2px 1px rgba(43,42,38,.30))
+        drop-shadow(3px 7px 7px rgba(43,42,38,.35));
+    transition: transform .25s ease;
+}
+.sticky-lift:hover{ transform: translate(var(--dx, 0), var(--dy, 0)) rotate(0deg) scale(1.05); z-index: 10; }
+.hand{
+    font-family: Caveat, cursive;
+    font-size: var(--t-xl);
+    color: var(--accent);
+}
+
+.calligraphy{
+    font-family: "Birthstone Bounce", cursive; font-weight: 500;
+    font-size: clamp(3rem, 40vw, 9rem);
+    letter-spacing: .05em; line-height: 0.9;
+    margin: 0 0 .1em;
+}

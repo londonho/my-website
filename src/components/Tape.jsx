@@ -4,7 +4,7 @@ export default function Tape({ color = "pink", rotate = -2, style }) {
         <span
         aria-hidden="true"
         className="tape"
-        style={{ background: palette[color], transform: 'rotate(${rotate}deg)', ...style }}
+        style={{ background: palette[color], transform: `rotate(${rotate}deg)`, ...style }}
         />
     );
 }
