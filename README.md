@@ -15,8 +15,6 @@ Built as a self-directed project to get back into front-end work. The design ide
   CSS gradients and `clip-path`, no images.
 - **FLIP transition** - opening the notebook measures the cover title and the logo with `getBoundingClientRect()`, then animates one onto the other as a single `transform`. No layout is animated, so it runs on the compositor.
 - **3D page turns** — direction-aware rotation around the spine using Framer Motion variants and `AnimatePresence` in `mode="wait"`, with a flat slide fallback on narrow screens.
-- **Curling corner** — an SVG dog-ear that previews the next page's colour and
-  navigates when clicked.
 - **No backend** — the contact form posts to a form endpoint, so the whole site stays a static build on GitHub Pages.
 - **Mobile without a second layout** — the cover renders at device width while the notebook is scaled down with CSS `zoom`, which (unlike `transform: scale`) affects layout, so there's no phantom overflow.
 
