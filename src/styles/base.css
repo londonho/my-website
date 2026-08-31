@@ -402,18 +402,3 @@ body{
 
 .form-status{ font-family: Caveat, cursive; font-size: var(--t-xl); color: var(--accent); min-height: 1.4em; }
 
-.peel{
-    position: absolute; right: 0; bottom: 0;
-    width: 58px; height: 58px;
-    border: none; padding: 0; cursor: pointer;
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
-    background: linear-gradient(315deg,
-        var(--peek, var(--accent)) 0 42%,
-        rgba(43,42,38,.45) 42% 45%,
-        var(--page) 45% 97%,
-        var(--page-edge) 97%);
-    box-shadow: inset 7px 7px 12px -7px rgba(43,42,38,.5);
-    filter: drop-shadow(-2px -2px 4px rgba(43,42,38,.22));
-    transition: width .25s ease, height .25s ease;
-}
-.peel:hover, .peel:focus-visible{ width: 92px; height: 92px; }

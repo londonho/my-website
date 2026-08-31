@@ -27,7 +27,7 @@ export default function Work() {
             {projects.map((p) => (
                 <article key={p.slug} className="project" style={{ "--tilt": p.tilt }}>
                     <Tape color="pink" rotate={-4} style={{ top:-12, left:"38%" }} />
-                    <img src={p.cover} alt={`${p.title} screenshot`} loading="lazy" />
+                    <img src={p.cover} alt={`${p.title} screenshot`} height="370" loading="lazy" />
                     <h2>{p.title}</h2>
                     <p>{p.blurb}</p>
                     <ul className="stack">{p.stack.map(s => <li key={s}>{s}</li>)}</ul>
