@@ -1,10 +1,11 @@
 import { useRef, useEffect } from "react";
-import { Routes, Route, useLocation, NavLink } from "react-router-dom";
+import { Routes, Route, useLocation, NavLink, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import About from "../pages/About"
 import Work from "../pages/Work";
 import Contact from "../pages/Contact";
 import { useNarrow } from "../lib/useNarrow";
+import { useFitScale } from "../lib/useFitScale"; 
 import RansomTitle from "../components/RansomTitle";
 
 const ORDER = ["/", "/work", "/contact"];
@@ -35,17 +36,23 @@ const slide = {
   exit: (d) => ({ x: d > 0 ? -40 : 40, opacity: 0, transition: { duration: .22 } }),
 };
 
+const PEEK = { "/": "var(--tape-pink)", "/work": "var(--marker)", "/contact": "var(--tape-blue)" };
+
 export default function Notebook({ onClose, logoRef, logoHidden }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const reduce = useReducedMotion();
   const narrow = useNarrow();
+  const fit = useFitScale();
   const variants = reduce ? undefined : (narrow ? slide : spread)
   const index = Math.max(0, ORDER.indexOf(location.pathname));
+  const next = ORDER[(index + 1) % ORDER.length];
   const prev = useRef(index);
   const dir = index >= prev.current ? 1 : -1;
+  
   useEffect(() => { prev.current = index; }, [index])
   return (
-    <div className="notebook">
+    <div className="notebook" style={{ zoom: fit }}>
       <header className="notebook-bar">
         <button
           className="logo-close"
@@ -77,6 +84,12 @@ export default function Notebook({ onClose, logoRef, logoHidden }) {
               <Route path="/work" element={<Work />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
+            <button
+              className="peel"
+              style={{ "--peek": PEEK[next] ?? "var(--accent)" }}
+              onClick={() => navigate(next)}
+              aria-label="Turn to the next page"
+            />
           </motion.main>
         </AnimatePresence>
       </div>
