@@ -2,6 +2,8 @@ import Tape from "../components/Tape";
 import { projects } from "../data/projects";
 import { experience } from "../data/experience";
 import { useTitle } from "../lib/useTitle";
+import Sticker from "../components/Sticker";
+import { asset } from "../lib/asset";
 
 export default function Work() {
     useTitle("Work")
@@ -20,6 +22,7 @@ export default function Work() {
                     <ul className="stack">{job.tags.map((t) => <li key={t}>{t}</li>)}</ul>
                 </article>
             ))}
+            <Sticker src={asset("stickers/miffy.png")} size={300} rotate={10} top={210} right={5} />
         </section>
         <section>
             <h2 className="section-label">projects</h2>

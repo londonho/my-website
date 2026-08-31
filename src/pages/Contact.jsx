@@ -2,6 +2,8 @@ import { useTitle } from "../lib/useTitle";
 import { useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
 import Tape from "../components/Tape";
+import Sticker from "../components/Sticker";
+import { asset } from "../lib/asset";
 
 const ACCESS_KEY = "84ee9352-8f19-4ce3-bfb6-98fda988e82e";
 
@@ -31,6 +33,7 @@ export default function Contact() {
                 <li><a href="https://linkedin.com/in/london-ho" target="_blank"><FaLinkedin aria-hidden /> linkedin</a></li>
                 <li><a href="mailto:londonho@icloud.com"><FaEnvelope aria-hidden /> email</a></li>
             </ul>
+            <Sticker src={asset("stickers/smiskilaptop.png")} size={300} rotate={-10} top={-10} right={20} />
             <form className="letter" onSubmit={handleSubmit}>
                 <Tape color="pink" rotate={-3} style={{ top: -12, left: "42%" }} />
                 <p className="salutation">Send me an e-mail!</p>
@@ -51,6 +54,7 @@ export default function Contact() {
                 <input type="checkbox" name="botcheck" tabIndex={-1} style={{ display: "none" }} />
                 <button className="stamp" type="submit" disabled={status === "sending"}>
                     {status === "sending" ? "sealing…" : "send it"}
+                    <Sticker src={asset("stickers/stamp.png")} size={350} rotate={80} top={-220} right={-670} />
                  </button>
                 <p className="form-status" role="status" aria-live="polite">
                     {status === "sent"  && "Sent. I'll write back soon."}

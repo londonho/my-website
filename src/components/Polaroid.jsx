@@ -10,12 +10,14 @@ export default function Polaroid({
     tape = "blue",
     tapeRotate = -6,
     tapePos = { top: -12, left: 24 },
+    children,
     }) {
     return (
         <figure className="polaroid" style={{ "--tilt": tilt, "--ratio": ratio }}>
             <Tape color={tape} rotate={tapeRotate} style={tapePos} />
             <img src={src} alt={alt} loading="lazy" style={{ objectPosition: focus }} />
             <figcaption>{caption}</figcaption>
+            {children}
         </figure>
     );
 }

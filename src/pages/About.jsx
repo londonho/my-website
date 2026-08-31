@@ -25,27 +25,32 @@ export default function About() {
                     I am currently looking for internship opportunities for Summer 2027!
                 </p>
                 <div className="notes-row">
-                    <StickyNote title="languages" items={languages}/>
+                    <StickyNote title="languages" items={languages}>
+                        <Sticker src={asset("stickers/drawnstar.png")} size={70} rotate={0} top={-7} left={55} />
+                    </StickyNote>
                     <StickyNote title="frameworks" items={frameworks} color="var(--tape-pink)" tilt="2deg" 
-                                dx="-20px" dy="20px" layer={2}/>
+                                dx="-20px" dy="20px" layer={2}>
+                        <Sticker src={asset("stickers/drawnstar.png")} size={70} rotate={-25} top={-7} left={45} />
+                    </StickyNote>
                     <StickyNote title="database" items={database} color="var(--tape-blue)" tilt="var(--tilt-c)"
                                 dx="-50px" dy="-20px" layer={2}/>
                     <StickyNote title="tools" items={tools} color="var(--marker)" tilt="2deg"
                                 dx="-90px" dy="40px" layer={2}/>
                     <StickyNote title="iam" items={iam} color="var(--tape-pink)" tilt="var(--tilt-c)"
-                                dx="-120px" dy="70px" layer={2}/>     
+                                dx="-120px" dy="70px" layer={2}/>
                 </div>
             </div>
             
             <aside className="gutter">
-                <Polaroid src={asset("photos/me.jpeg")} alt="Selfie of London" caption="I am London Ho" focus="40% 50%"/>
-                <Sticker src={asset("stickers/smiski.png")} size={150} rotate={-8} top={225} right={-25} />
+                <Polaroid src={asset("photos/me.jpeg")} alt="Selfie of London" caption="I am London Ho" focus="40% 50%"> 
+                    <Sticker src={asset("stickers/smiski.png")} size={130} rotate={-8} top={225} right={-15} />
+                </Polaroid>
             </aside>
         </div>
         
         <section className="spread-grid flip">
             <aside className="gutter">
-                <Sticker src={asset("stickers/hairclips.png")} size={200} rotate={290} top={-180} left={430} />
+                <Sticker src={asset("stickers/hairclips.png")} size={200} rotate={290} top={-160} left={430} />
                 <Polaroid
                     src={asset("photos/shumai.jpeg")}
                     alt="My cat"
@@ -56,8 +61,9 @@ export default function About() {
                     tapeRotate={5}
                     tapePos={{ top: -10, right: 18 }}
                     focus = "50% 30%"
-                />
-                <Sticker src={asset("stickers/rilakkuma.png")} size={150} rotate={5} top={160} right={-30} />
+                >
+                    <Sticker src={asset("stickers/rilakkuma.png")} size={150} rotate={5} top={160} right={-30} />
+                </Polaroid>
             </aside>
             <div className="column">
                 <h2 className="hand">My personal life...</h2>
