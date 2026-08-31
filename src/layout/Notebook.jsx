@@ -36,6 +36,8 @@ const slide = {
   exit: (d) => ({ x: d > 0 ? -40 : 40, opacity: 0, transition: { duration: .22 } }),
 };
 
+const NAMES = { "/": "About", "/work": "Work", "/contact": "Contact" };
+
 export default function Notebook({ onClose, logoRef, logoHidden }) {
   const location = useLocation();
   const reduce = useReducedMotion();
@@ -43,12 +45,14 @@ export default function Notebook({ onClose, logoRef, logoHidden }) {
   const fit = useFitScale();
   const variants = reduce ? undefined : (narrow ? slide : spread)
   const index = Math.max(0, ORDER.indexOf(location.pathname));
+  const next = ORDER[(index + 1) % ORDER.length];
   const prev = useRef(index);
   const dir = index >= prev.current ? 1 : -1;
   
   useEffect(() => { prev.current = index; }, [index])
+  useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
   return (
-    <div className="notebook" style={{ zoom: fit }}>
+    <div className="notebook grain" style={{ zoom: fit }}>
       <header className="notebook-bar">
         <button
           className="logo-close"
@@ -79,7 +83,12 @@ export default function Notebook({ onClose, logoRef, logoHidden }) {
               <Route path="/" element={<About />} />
               <Route path="/work" element={<Work />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<About />} />
             </Routes>
+            <footer className="page-turn">
+              <span className="page-no">{index + 1} / {ORDER.length}</span>
+              <NavLink to={next} className="next-link">{NAMES[next]} →</NavLink>
+            </footer>
           </motion.main>
         </AnimatePresence>
       </div>

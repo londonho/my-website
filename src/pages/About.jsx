@@ -18,7 +18,7 @@ export default function About() {
                     M.S. in Computer Science at New York University
                 </h2>
                 <p>
-                    I'm doing my Master's in Computer Science at New York University,
+                    I'm currently pursuing my Master's in Computer Science at New York University,
                     and I also did my Bachelor's in Computer Science as well at the
                     University of Georgia. I'm a full-stack developer with an interest
                     in Human-Computer Interaction, Cybersecurity, and Information Security.

@@ -1,6 +1,6 @@
 import { useTitle } from "../lib/useTitle";
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaEnvelope, FaFilePdf } from "react-icons/fa"
 import Tape from "../components/Tape";
 import Sticker from "../components/Sticker";
 import { asset } from "../lib/asset";
@@ -32,6 +32,7 @@ export default function Contact() {
                 <li><a href="https://github.com/londonho" target="_blank"><FaGithub aria-hidden /> github</a></li>
                 <li><a href="https://linkedin.com/in/london-ho" target="_blank"><FaLinkedin aria-hidden /> linkedin</a></li>
                 <li><a href="mailto:londonho@icloud.com"><FaEnvelope aria-hidden /> email</a></li>
+                <li><a href={asset("london-ho-resume.pdf")} download><FaFilePdf aria-hidden />résumé</a></li>
             </ul>
             <Sticker src={asset("stickers/smiskilaptop.png")} size={300} rotate={-10} top={-10} right={20} />
             <form className="letter" onSubmit={handleSubmit}>

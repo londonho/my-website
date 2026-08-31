@@ -3,6 +3,12 @@ html{
     text-size-adjust: 100%;
 }
 
+:focus-visible{
+    outline: 2.5px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
 body{
     margin:0;
     background-color: var(--paper);
@@ -20,6 +26,17 @@ body{
     box-shadow: var(--shadow-lift);
     padding: var(--s-4);
 }
+
+.page-turn{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-top: var(--s-5); padding-top: var(--s-3);
+    border-top: 1.5px dashed var(--page-edge);
+}
+.page-no{ font-family:Archivo,sans-serif; font-size:var(--t-xs);
+    letter-spacing:.14em; color:var(--graphite); }
+.next-link{ font-family:Caveat,cursive; font-size:var(--t-xl);
+    color:var(--accent); text-decoration:none; }
+.next-link:hover{ text-decoration:underline; }
 
 .grain::after{
     content:""; position:fixed; inset:0; pointer-events: none;
@@ -274,7 +291,7 @@ body{
     box-shadow: var(--shadow-lift);
     transition: transform .3s ease;
 }
-.project img{ display:block; width:100%; aspect-ratio:16/10; object-fit:cover; }
+.project img{ display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
 .project h2{
     font-family: Archivo, sans-serif; font-weight:900;
     font-size: var(--t-lg); margin:12px 0 4px;
@@ -344,6 +361,7 @@ body{
 }
 .links li:nth-child(2) a{ --chip: var(--marker); --chip-tilt: var(--tilt-b); }
 .links li:nth-child(3) a{ --chip: var(--tape-pink); --chip-tilt: var(--tilt-a); }
+.links li:nth-child(4) a{ --chip: var(--page); --chip-tilt: 1.4deg; border: 1.5px dashed var(--accent);}
 .links a:hover{ transform: rotate(0deg) translateY(-2px); }
 
 .letter{
